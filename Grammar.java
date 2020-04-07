@@ -77,8 +77,8 @@ public class Grammar {
      */
  public Boolean ErasableRhs(RightHandSide r){
      if (r.isEpsilon()) return true;
-     if (r.isTerminal()) return false;
-     if (r.isSingleNonTerminal()) return ErasableNonTerminal((NonTerminal)r.getSymbols().get(0));
+//     if (r.isTerminal()) return false;
+//     if (r.isSingleNonTerminal()) return ErasableNonTerminal((NonTerminal)r.getSymbols().get(0));
      for (Symbol symbol : r.getSymbols()) {
          if (symbol.getClass() == Terminal.class) {
              return false;
