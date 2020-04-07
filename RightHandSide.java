@@ -43,7 +43,7 @@ public class RightHandSide {
      * @return vrai (true) si le membre droit ne contient qu'un élément qui est un terminal
      */
    public Boolean isTerminal() {
-       return rhs.size() == 1 && rhs.get(0).getClass() == Terminal.class;
+       return rhs.size() == 1 && rhs.get(0) instanceof Terminal;
    }
 
 
@@ -52,7 +52,7 @@ public class RightHandSide {
      * @return vrai (true) si le membre droit ne contient qu'un élément qui est un non-terminal
      */
     public Boolean isSingleNonTerminal() {
-        return rhs.size() == 1 && rhs.get(0).getClass() == NonTerminal.class;
+        return rhs.size() == 1 && rhs.get(0) instanceof NonTerminal;
     }
 
 
