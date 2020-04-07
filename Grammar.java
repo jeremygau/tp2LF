@@ -10,7 +10,7 @@ public class Grammar {
   */
  public Grammar(NonTerminal ax) {
     this.axiom = ax;
-    this.Rules = new HashMap<NonTerminal, ArrayList<RightHandSide>>();
+    this.Rules = new HashMap<>();
  }
 
     /**
@@ -69,23 +69,14 @@ public class Grammar {
      return false;
  }
 
-
-
     /**
      * teste si une suite de Symbol formant un membre droit peut s'effacer, c'est-à-dire se dériver en epsilon
      * @return vrai (true) si un membre droit peut se dériver en epsilon
      */
  public Boolean ErasableRhs(RightHandSide r){
-     if (r.isEpsilon()) return true;
-//     if (r.isTerminal()) return false;
-//     if (r.isSingleNonTerminal()) return ErasableNonTerminal((NonTerminal)r.getSymbols().get(0));
      for (Symbol symbol : r.getSymbols()) {
-         if (symbol.getClass() == Terminal.class) {
+         if (symbol instanceof Terminal || !ErasableNonTerminal((NonTerminal)symbol))
              return false;
-         }
-         if (!ErasableNonTerminal((NonTerminal)symbol)){
-             return false;
-         }
      }
     return true;
 
@@ -106,7 +97,7 @@ public class Grammar {
 
 
 
-    public static void main(String args[])
+    public static void main(String[] args)
     {
         String output;
 
